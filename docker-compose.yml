@@ -1,0 +1,23 @@
+version: '3'
+services:
+  web:
+    image: yellio/adeofirst:nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - "./src/:/src/:rw"
+      - "./site0.conf:/etc/nginx/conf.d/0site.conf"
+  php:
+    image: yellio/adeofirst:php
+    volumes:
+      - "./src/:/src/:rw"
+  db:
+    image: yellio/adeofirst:mysql
+    environment:
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_DATABASE=db
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3307:3306"
+    volumes:
+      - "./database/:/var/lib/mysql:rw"
