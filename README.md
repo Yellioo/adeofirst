@@ -10,20 +10,6 @@ Start `docker-compose.yml` file (be in the same folder as `docker-compose.yml` f
 $ sudo docker-compose up
 ```
 > This command will download images, and create containers.
-> Also it will create 2 folders. Both of them will be created 
-> with root permissions. With next step we will make these files 
-> owned by our user. 
-
-Check your UID with this command:
-```sh
-$ echo $UID
-```
-Run these commands in terminal (change <your_user_name> to your user name):
-```sh
-$ sudo docker exec -i adeofirst_php_1 bash -c "cd / && useradd -u <your_user_UID> <your_user_name> && chown -R <your_user_name>:<your_user_name> src/"
-$ sudo docker exec -i adeofirst_db_1 bash -c "cd / && useradd -u <your_user_UID> <your_user_name> && chown -R <your_user_name>:<your_user_name> var/lib/mysql"
-``` 
-`WARNING: AFTER EVERY MYSQL CONTAINER RECREATION, USE SECOND COMMAND AGAIN!!`
 
 Install `composer` in php container with this command:
 ```sh 
